@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import Watchlist, StreamPlatform
+from .models import Watchlist, StreamPlatform, Review
 from django.http import JsonResponse    
-from .serializers import WatchlistSerializer, StreamPlatformSerializer
+from .serializers import WatchlistSerializer, StreamPlatformSerializer, ReviewSerializer
 from rest_framework.response import Response
 # from rest_framework.decorators import api_view  
 from rest_framework.views import APIView
@@ -104,7 +104,7 @@ class StreamPlatformDetailAV(APIView):
         serializer = StreamPlatformSerializer(platform)
         return Response(serializer.data)
     
-
+  
     def put(self, request, pk):
         platform = StreamPlatform.objects.get(pk=pk)
         serializer = StreamPlatformSerializer(platform, data=request.data)
